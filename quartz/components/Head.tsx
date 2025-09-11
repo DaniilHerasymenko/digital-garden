@@ -4,13 +4,13 @@ import { CSSResourceToStyleElement, JSResourceToScriptElement } from "../util/re
 import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
-import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
+// import { CustomOgImagesEmitterName } from "../plugins/emitters/ogImage"
 export default (() => {
   const Head: QuartzComponent = ({
     cfg,
     fileData,
     externalResources,
-    ctx,
+    // ctx,
   }: QuartzComponentProps) => {
     const titleSuffix = cfg.pageTitleSuffix ?? ""
     const title =
@@ -25,16 +25,16 @@ export default (() => {
     const url = new URL(`https://${cfg.baseUrl ?? "example.com"}`)
     const path = url.pathname as FullSlug
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
-    const iconPath = joinSegments(baseDir, "static/icon.png")
+    const iconPath = joinSegments(baseDir, "static/neboskhyl.jpg")
 
     // Url of current page
     const socialUrl =
       fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
 
-    const usesCustomOgImage = ctx.cfg.plugins.emitters.some(
-      (e) => e.name === CustomOgImagesEmitterName,
-    )
-    const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
+    // const usesCustomOgImage = ctx.cfg.plugins.emitters.some(
+    //   (e) => e.name === CustomOgImagesEmitterName,
+    // )
+    // const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
 
     return (
       <head>
@@ -62,7 +62,7 @@ export default (() => {
         <meta property="og:description" content={description} />
         <meta property="og:image:alt" content={description} />
 
-        {!usesCustomOgImage && (
+        {/* {!usesCustomOgImage && (
           <>
             <meta property="og:image" content={ogImageDefaultPath} />
             <meta property="og:image:url" content={ogImageDefaultPath} />
@@ -72,7 +72,7 @@ export default (() => {
               content={`image/${getFileExtension(ogImageDefaultPath) ?? "png"}`}
             />
           </>
-        )}
+        )} */}
 
         {cfg.baseUrl && (
           <>
