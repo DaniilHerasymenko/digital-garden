@@ -23,6 +23,7 @@ export interface Options {
 }
 
 const defaultOptions: Options = {
+  title: "Зміст",
   folderDefaultState: "collapsed",
   folderClickBehavior: "link",
   useSavedState: true,
